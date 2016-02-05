@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>xo</title>
+<style media="screen">
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  text-align: center;
+  background-color: rgb(17, 55, 74);
+}
+  canvas{
+    background-color: lime;
+     /*width:100px;
+     height:100px;*/
+    transition: transform 1s;
+  }
+  canvas:hover{
+    width: 102px;
+    height: 98px;
+    opacity: .7;
+  }
+  .cont{
+    margin: 150px auto 50px;
+  }
+</style>
+  </head>
+  <body>
+    <div class="cont">
+      <canvas id="sq1" height="100" width="100" onclick="pTurne(1)"></canvas>
+      <canvas id="sq2" height="100" width="100" onclick="pTurne(2)"></canvas>
+      <canvas id="sq3" height="100" width="100" onclick="pTurne(3)"></canvas><br>
+      <canvas id="sq4" height="100" width="100" onclick="pTurne(4)"></canvas>
+      <canvas id="sq5" height="100" width="100" onclick="pTurne(5)"></canvas>
+      <canvas id="sq6" height="100" width="100" onclick="pTurne(6)"></canvas><br>
+      <canvas id="sq7" height="100" width="100" onclick="pTurne(7)"></canvas>
+      <canvas id="sq8" height="100" width="100" onclick="pTurne(8)"></canvas>
+      <canvas id="sq9" height="100" width="100" onclick="pTurne(9)"></canvas>
+    </div>
+<script type="text/javascript" src="xo.js"></script>
+  </body>
+</html>

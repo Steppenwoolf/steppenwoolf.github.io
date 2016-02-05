@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+    <meta charset="utf-8">
+    <title>game</title>
+<style media="screen">
+  #hmarca {
+    position: absolute;
+    background-image: url(Cloud.png);
+    animation: 4s muve1 ease-in;
+    animation-fill-mode: forvards;
+    animation-iteration-count: 444;
+    animation-direction: alternate;
+    transition-timing-function: linear;
+    background-size: cover;
+    width: 200px;
+    height: 110px;
+    background-repeat: no-repeat;    
+  }
+  @keyframes muve1{
+      0%{right:85%;}
+      100%{right:10%}
+  }
+  .snow {
+    position: absolute;
+    background-image: url(snow.png);
+    background-size: 50px auto;
+    width: 50px;
+    height: 50px;
+    top: 55px;
+    left: 90px;
+  }
+  #box {
+  	width: 100px;
+  	height: 100px;
+  	position: absolute;
+  	bottom: 150px;
+  	background-image: url(http://i.imgur.com/FPUvY0T.gif);
+  	vertical-align: 50px;
+  	color: #409A45;
+  	font-weight: bold;
+  	font-size: xx-large;
+  	text-shadow: 0px 0px 1px #000000;
+  	background-repeat: no-repeat;
+  	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+  	padding-top: 50px;
+  }
+</style>
+ </head>
+  <body>
+<div id="hmarca"></div>
+<div id="box"></div>
+
+<!-- <div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div>
+<div class="snow"></div> -->
+
+<script type="text/javascript">
+//number of snowflakes
+var snowmax=3
+var snowcolor=new Array("#b9dff5","#7fc7ff","#7fb1ff","#7fc7ff","#b9dff5")
+var snowtype=new Array("Times")
+var snowletter="*"
+var sinkspeed=0.2
+var snowmaxsize=80
+var snowminsize=25
+
+var snow=new Array()
+var marginbottom
+var marginright
+var timer
+var i_snow=0
+var x_mv=new Array();
+var crds=new Array();
+var lftrght=new Array();
+var hmara = hmarca.getBoundingClientRect();
+var snowNumber = snowmax + 1;
+
+function randommaker(range) {
+        rand=Math.floor(range*Math.random())
+    return rand
+}
+
+function initsnow() {
+  /*
+        marginbottom = marginbottom = document.body.scrollHeight
+        marginright = document.body.clientWidth-15
+
+
+        var snowsizerange=snowmaxsize-snowminsize
+        for (i=0;i<=snowmax;i++) {
+                crds[i] = 0;
+            lftrght[i] = Math.random()*15;
+            x_mv[i] = 0.03 + Math.random()/10;
+                snow[i]=document.getElementById(i)
+                snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
+                snow[i].size=randommaker(snowsizerange)+snowminsize
+                snow[i].style.fontSize=snow[i].size+'px';
+                snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
+                snow[i].style.zIndex=1000
+                snow[i].sink=sinkspeed*snow[i].size/5
+                snow[i].posx=randommaker(marginright-snow[i].size)
+
+                snow[i].posy=randommaker(2*marginbottom-marginbottom-2*snow[i].size)
+                snow[i].style.left=snow[i].posx+'px';
+                snow[i].style.top=snow[i].posy+'px';
+        }
+        */
+        setInterval(createSnow, 500);
+        movesnow()
+}
+
+function movesnow() {
+  try{
+        var snow = document.querySelectorAll("span._snow")
+        for (i=0;i<snow.length;i++) {
+                
+                id = snow[i].id;
+                crds[id] += x_mv[id];
+                snow[i].posy+=snow[i].sink
+                snow[i].style.left=snow[i].posx+lftrght[id]*Math.sin(crds[id])+'px';
+                snow[i].style.top=snow[i].posy+'px';
+
+                if (snow[i].posy>=marginbottom-2*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[id])){
+                  // снег упал, пусть лежит
+                  snow[i].setAttribute('class', '_upal')
+                        //snow[i].posx=randommaker(marginright-snow[i].size)
+
+                        //snow[i].posy=0
+                }
+        }
+        var timer=setTimeout("movesnow()",50)
+        //createSnow()
+  } catch (e) {
+    alert(e)
+  }
+}
+
+createSnow = function() {
+        marginbottom = marginbottom = document.body.scrollHeight
+        marginright = document.body.clientWidth-15
+
+        i = snowNumber;
+        var snowsizerange=snowmaxsize-snowminsize
+        //for (i=0;i<=snowmax;i++) {
+                crds[i] = 0;
+            lftrght[i] = Math.random()*15;
+            x_mv[i] = 0.03 + Math.random()/10;
+                snow[i]=document.createElement('span')
+                snow[i].appendChild(document.createTextNode(snowletter))
+                snow[i].setAttribute('id', i)
+                snow[i].setAttribute('class', '_snow')
+                snow[i].style.position = 'absolute'
+                snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
+                snow[i].size=randommaker(snowsizerange)+snowminsize
+                snow[i].style.fontSize=snow[i].size+'px';
+                snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
+                snow[i].style.zIndex=1000
+                snow[i].sink=sinkspeed*snow[i].size/5
+                hmara = hmarca.getBoundingClientRect();
+                snow[i].posx=hmara.left + randommaker(hmara.right - hmara.left -snow[i].size)
+                
+                snow[i].posy=(hmara.bottom + hmara.top)/2//randommaker(2*marginbottom-marginbottom-2*snow[i].size)
+                snow[i].style.left=snow[i].posx+'px';
+                snow[i].style.top=snow[i].posy+'px';
+                document.body.appendChild(snow[i])
+        //}
+        snowNumber++;
+        //movesnow()
+}
+
+for (i=0;i<=snowmax;i++) {
+        document.write("<span class='_snow' id='"+i+"' style='position:absolute;top:-"+snowmaxsize+"'>"+snowletter+"</span>")
+}
+
+window.onload=initsnow
+
+document.onmousemove=function(){
+box.style.left=event.clientX-30+"px";
+}
+
+var score = 0;
+
+checkCollision = function() {
+	try {
+		var volk = box.getBoundingClientRect(),
+			snega,
+			sneg,
+			delta = 15;
+
+		snega = document.querySelectorAll("span");
+		for (var i = 0; i < snega.length; i++) {
+			sneg = snega[i].getBoundingClientRect();
+			//snek.innerHTML = 'y:'+volk.top+ ',x:'+volk.left+' y:'+sneg.top+ ',x:'+sneg.left;
+			if (Math.abs(sneg.top - volk.top) < delta && Math.abs(sneg.left - volk.left) < delta) {
+				// collision
+				score++;
+				document.getElementById("box").innerHTML = score;
+        snega[i].parentElement.removeChild(snega[i])
+        
+			}
+}
+
+
+} catch (e) {
+	alert(e)
+}
+}
+
+			setInterval(checkCollision, 100);
+</script>
+
+<!-- <script type="text/javascript">
+  var snow = document.querySelectorAll(".snow"),
+    top = [],
+    TOP = 600,
+    num=0;
+  for (var i = 0; i < snow.length; i++) {
+    top[i] = 0;
+  }
+  setInterval(function () {
+
+    move1px(snow[num],num);
+    num++;
+    if (num>snow.length-1) {
+      num=0;
+
+}
+  },10)
+
+
+  function move1px(element) {
+    top[num]+=num;
+    element.style.top = top[num]+"px";
+    if (top[num] > TOP) {
+  //    snow[num].style.left=marginCloud;  //otstup
+    top[num] = 0;
+    snow[num].style.dispay="block";
+    }
+  }
+</script> -->
+
+ </body>
+</html>

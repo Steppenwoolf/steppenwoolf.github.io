@@ -1,0 +1,131 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+.navbar {
+  font-size: 13px;
+  font-family: "Lato";
+  color: rgb( 26, 187, 156);
+  text-transform: uppercase;
+  line-height: 5;
+  margin-bottom: 0;
+}
+.splash {
+  height: 8em;
+  padding-top: 2em;
+  font-weight: 300;
+  font-size: 80px;
+  font-family: "Lato";
+  /*margin-bottom: 2em;*/
+  background-image: url(../img/jumb.jpg);
+  background-size: cover;
+}
+.splashT {
+  font-weight: 300;
+  font-size: 6vw;
+  font-family: "Lato";
+  color: rgb( 255, 255, 255);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.813;
+}
+.splashLt {
+  font-weight: 300;
+}
+.jumbotron {
+  border-radius: 0;
+  padding: inherit;
+  margin: 0;
+  min-height: 50vh;
+  background-image: url(../img/jumb.jpg);
+  background-size: cover;
+}
+.bar {
+  overflow: hidden;
+}
+.barText {
+  font-size: 25px;
+  font-family: "Lato";
+  color: rgb( 255, 255, 255);
+  text-transform: uppercase;
+  line-height: 2.6;
+  position: relative;
+  top: -85px;
+  left: 90px;
+}
+h2 {
+  font-size: 16px;
+  font-family: "Lato";
+  color: rgb( 72, 72, 72);
+  text-transform: uppercase;
+  line-height: 4.063;
+  font-weight: 700
+}
+h5 {
+  font-size: 22px;
+  font-family: "Lato";
+  color: rgb( 72, 72, 72);
+  line-height: 1.591;
+  font-weight: 300
+}
+p {
+  font-size: 15px;
+  font-family: "Lato";
+  color: rgb( 101, 101, 101);
+  line-height: 2.2;
+}
+.Conc {
+  font-size: 16px;
+  font-family: "Lato";
+  color: rgb( 255, 255, 255);
+  line-height: 4.063;
+}
+.Conc p {
+  font-size: 15px;
+  font-family: "Lato";
+  color: rgb( 210, 210, 210);
+  line-height: 2.2;
+}
+.nomargine {
+  margin: 0;
+  padding: 0;
+}
+.circle {
+  width: 320px;
+  height: 320px;
+  float: left;
+  margin: 15px 30px 20px 0px;
+}
+.well {
+  padding: 0;
+  background-color: #333333;
+  border: 1px solid #333333;
+}
+.caruselImg {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 5px;
+}
+.carousel-control {
+  padding-top: 5%;
+  width: 5%;
+}
+.port {
+  background-color: #333333;
+}
+.portText {
+  padding-left: 95px;
+}
+.contact {
+  background-image: url(../img/nn.png);
+}
+.input {
+  opacity: .5;
+  color: #fff;
+  border-radius: 0;
+  margin: 15px;
+  background-color: #666;
+  border: 0px solid #ccc;
+}
+footer {
+  text-align: center;
+}

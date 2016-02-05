@@ -1,0 +1,29 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-ice {
+    width: 335px;
+    height: 490px;
+    background-position: -5px -5px;
+}
+
+.sprite-leftCloud {
+    width: 199px;
+    height: 60px;
+    background-position: -5px -505px;
+}
+
+.sprite-rCloud {
+    width: 333px;
+    height: 51px;
+    background-position: -5px -575px;
+}
+
+.sprite-ship {
+    width: 48px;
+    height: 24px;
+    background-position: -5px -636px;
+}
